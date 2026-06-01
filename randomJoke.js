@@ -1,10 +1,11 @@
-const jokeBody = document.getElementById("joke");
+const jokeBody = document.getElementById("joke-body");
+const jokeBtn = document.getElementById("joke-btn");
 
 const setUp = document.createElement("i");
-jokeBody.appendChild(setUp);
+jokeBody.insertBefore(setUp, jokeBtn);
 
 const punchline = document.createElement("p");
-jokeBody.appendChild(punchline);
+jokeBody.insertBefore(punchline, jokeBtn);
 
 const displayJoke = async () => {
     const response = await fetch("https://official-joke-api.appspot.com/random_joke");
@@ -13,4 +14,6 @@ const displayJoke = async () => {
     punchline.innerText = joke.punchline;
 }
 
-displayJoke();
+jokeBtn.addEventListener("click", () => {
+    displayJoke();
+})
