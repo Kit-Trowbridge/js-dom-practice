@@ -7,27 +7,15 @@ body.insertBefore(task, btn);
 const status = document.createElement("p");
 body.insertBefore(status, btn);
 
+// const randomTask = () => {
+
+// }
+
 btn.addEventListener("click", async () => {
     const response = await fetch("https://jsonplaceholder.typicode.com/todos/7");
     const todo = await response.json();
 
     task.innerText = todo.title;
-    status.innerText = todo.completed ? "completed" : "not completed";
+    status.innerText = `${!todo.completed ? "not " : ""}completed`;
 })
-
-// const loadTodo = async () => {
-//     const response = await fetch("https://jsonplaceholder.typicode.com/todos/7");
-//     const todo = await response.json();
-//     return todo;
-// }
-
-// const displayTodo = () => {
-//     btn.addEventListener("click", async () => {
-//         const todo = loadTodo();
-//         task.innerText = todo.title;
-//         status.innerText = todo.completed;
-//     })
-// }
-
-// displayTodo();
 
